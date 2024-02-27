@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/styles.css">
+    <script defer src="./js/main.js"></script>
+    <title>Create Employee</title>
+</head>
+<body>
+    <div class="body__container">
+        <section class="create__container">
+            <h1 class="create__title">Create Employee</h1>
+
+            <div class="full__name">
+                <label for="firstName">First Name:</label>
+                <input type="text" name="firstName" placeholder="John" required>
+                <label for="lastName">Last Name:</label>
+                <input type="text" name="lastName" placeholder="Smith" required>
+            </div>
+
+            <div class="contact__info">
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email" placeholder="johnsmith@aol.com" required>
+                <label for="cellphone">Phone:</label>
+                <input type="tel" name="cellphone" required>
+            </div>
+
+            <label for="role">Role:</label>
+            <input type="text" name="role" id="role" required>
+
+            <div class="user__picture">
+                <div class="genders">
+                    <label for="gender">Gender:</label>
+                    <input type="radio" name="gender" id="genderFemale" value="Female" required>
+                    <label for="genderFemale">F</label>
+                    <input type="radio" name="gender" id="genderMale"  value="Male" required>
+                    <label for="genderMale">M</label>
+                    <input type="radio" name="gender" id="genderNonBinary" value="Non-Binary" required>
+                    <label for="genderNonBinary">X</label>
+                </div>
+            </div>
+
+            <div class="buttons">
+                <button class="addBtn btn" title="Adds a new Employee">Add</button>
+                <button class="clearBtn btn" title="Clears all inputs">Clear</button>
+                <button class="updateBtn btn" title="Updates an existing Employee">Update</button>
+            </div>
+        </section>
+        
+        <section class="display__container">
+            <h1 class="display__title">Display Employee</h1>
+        </section>
+    </div>
+</body>
+</html>

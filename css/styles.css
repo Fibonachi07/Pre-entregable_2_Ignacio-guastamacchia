@@ -1,0 +1,170 @@
+:root {
+    font-family: system-ui, 'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+img,
+picture,
+video,
+svg {
+    max-width: 100%;
+    display: block;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    text-wrap: balance;
+}
+
+p {
+    text-wrap: pretty;
+}
+
+label {
+    font-size: 1.5rem;
+    padding: 0.2rem;
+    display: block;
+}
+
+input {
+    font-size: 1.5rem;
+    margin: 0.2rem;
+    border-radius: 1rem;
+    padding-left: 0.5rem;
+    width: 100%;
+}
+
+.body__container {
+    width: 100%;
+    gap: 1rem;
+    padding-inline: 1rem;
+    padding-top: 1rem;
+
+}
+
+.create__container, .display__container {
+    background-color: hsl(240, 82%, 27%);
+    color: white;
+    padding: 1rem;
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+}
+
+.create__title, .display__title {
+    font-size: 3rem;
+
+}
+
+.full__name {
+    display: flex;
+    flex-direction: column;
+}
+
+.user__picture input[type="file"] {
+    font-size: 1.2rem;
+}
+
+.genders {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}
+
+.genders input {
+    width: fit-content;
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 0.5rem 1rem;
+    border-radius: 100vw;
+    border: none;
+    font-size: 1.2rem;
+    margin-top: 0.65rem;
+    margin-inline: 0.3rem;
+    cursor: pointer;
+}
+
+.addBtn {
+    background-color: hsl(120, 100%, 25%);
+    color: white;
+}
+
+.clearBtn {
+    background-color: hsl(0, 85%, 39%);
+    color: white;
+}
+
+.updateBtn {
+    background-color: hsl(240, 68%, 52%);
+    color: white;
+}
+
+.card {
+    border: 2px solid white;
+    border-radius: 10px;
+    margin-top: 1rem;
+    padding: 1rem;
+}
+
+.card__header {
+    display: flex;
+}
+
+.card__info {
+    text-align: center;
+    flex-wrap: wrap;
+}
+
+.img__container {
+    width: 150px;
+    border-radius: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.img__container img {
+    border-radius: 100%;
+}
+
+.card__fullname {
+    text-align: start;
+    font-size: 3rem;
+}
+
+.role {
+    text-align: start;
+    font-size: 2rem;
+}
+
+.card__contact {
+    display: flex;
+    gap: 2rem;
+    font-size: 1.5rem;
+    margin-top: 2rem;
+}
+
+.displayButtons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 2rem;
+
+}
+
+.removeBtn, .editBtn {
+    font-size: 2rem;
+    padding: 0.3rem;
+    border: none;
+    border-radius: 0.2rem;
+    cursor: pointer;
+}
