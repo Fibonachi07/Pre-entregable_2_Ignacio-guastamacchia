@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const lastNameInput = document.querySelector('input[name="lastName"]');
         const emailInput = document.querySelector('input[name="email"]');
         const phoneInput = document.querySelector('input[name="cellphone"]');
-        const roleInput = document.querySelector('input[name="role"]');
+        const positionInput = document.querySelector('input[name="position"]');
         const genderInputs = document.querySelectorAll('input[name="gender"]');
     
         // Extract values from form inputs
@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const lastName = lastNameInput.value;
         const email = emailInput.value;
         const phone = phoneInput.value;
-        const role = roleInput.value;
+        const position = positionInput.value;
         let gender = '';
         genderInputs.forEach(input => {
             if (input.checked) {
@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     
         // Perform validation
-        if (!firstName || !lastName || !email || !phone || !role || !gender) {
+        if (!firstName || !lastName || !email || !phone || !position || !gender) {
             alert("Please fill out all fields.");
             return;
         }
@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function() {
             <div class="card__header">
                 <div class="card__info">
                     <h2 class="card__fullname">${firstName} ${lastName}</h2>
-                    <p class="role">${role}</p>
+                    <p class="position">${position}</p>
                 </div>
             </div>
             <div class="card__contact">
@@ -72,14 +72,14 @@ document.addEventListener("DOMContentLoaded", function() {
             const [firstName, lastName] = fullName.split(' ');
             const email = card.querySelector('.card__email').textContent.split(': ')[1];
             const phone = card.querySelector('.card__cellphone').textContent.split(': ')[1];
-            const role = card.querySelector('.role').textContent;
+            const position = card.querySelector('.position').textContent;
             const gender = card.querySelector('.card__gender').textContent.split(': ')[1];
     
             document.querySelector('input[name="firstName"]').value = firstName;
             document.querySelector('input[name="lastName"]').value = lastName;
             document.querySelector('input[name="email"]').value = email;
             document.querySelector('input[name="cellphone"]').value = phone;
-            document.querySelector('input[name="role"]').value = role;
+            document.querySelector('input[name="position"]').value = position;
             document.querySelector(`input[name="gender"][value="${gender}"]`).checked = true;
     
             card.classList.add('card--editing');
@@ -94,10 +94,10 @@ document.addEventListener("DOMContentLoaded", function() {
         const lastName = document.querySelector('input[name="lastName"]').value;
         const email = document.querySelector('input[name="email"]').value;
         const phone = document.querySelector('input[name="cellphone"]').value;
-        const role = document.querySelector('input[name="role"]').value;
+        const position = document.querySelector('input[name="position"]').value;
         const gender = document.querySelector('input[name="gender"]:checked').value;
     
-        if (!firstName || !lastName || !email || !phone || !role || !gender) {
+        if (!firstName || !lastName || !email || !phone || !position || !gender) {
             alert("Please fill out all fields.");
             return;
         }
@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function() {
             <div class="card__header">
                 <div class="card__info">
                     <h2 class="card__fullname">${firstName} ${lastName}</h2>
-                    <p class="role">${role}</p>
+                    <p class="position">${position}</p>
                 </div>
             </div>
             <div class="card__contact">
