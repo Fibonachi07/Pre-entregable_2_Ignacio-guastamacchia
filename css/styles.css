@@ -39,6 +39,10 @@ input {
     width: 100%;
 }
 
+.error {
+    border: 3px solid red;
+}
+
 .body__container {
     width: 100%;
     gap: 1rem;
