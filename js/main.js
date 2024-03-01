@@ -53,6 +53,7 @@ document.addEventListener("DOMContentLoaded", function() {
             </div>
         `;
         cardContainer.appendChild(newCard);
+        clearInputs()
     }
 
     // Function card removal
@@ -96,13 +97,11 @@ document.addEventListener("DOMContentLoaded", function() {
         const role = document.querySelector('input[name="role"]').value;
         const gender = document.querySelector('input[name="gender"]:checked').value;
     
-        // Perform validation
         if (!firstName || !lastName || !email || !phone || !role || !gender) {
             alert("Please fill out all fields.");
             return;
         }
     
-        // Create a new employee card with updated information
         const updatedCard = document.createElement('div');
         updatedCard.classList.add('card');
     
@@ -129,6 +128,7 @@ document.addEventListener("DOMContentLoaded", function() {
         cardContainer.replaceChild(updatedCard, cardToUpdate);
     
         updatedCard.classList.remove('card--editing');
+        clearInputs()
    
     }
 
@@ -149,6 +149,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
     document.querySelector('.updateBtn').addEventListener('click', updateEmployee);
 
+
+    
     document.addEventListener('click', function(event) {
         if (event.target.classList.contains('removeBtn')) {
             removeEmployee(event);
