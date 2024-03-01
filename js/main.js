@@ -1,8 +1,27 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // Function to handle form submission
+
+    let cards = [];
+    // Load cards from localStorage if available
+    const cardsLS = localStorage.getItem("cards");
+    if (cardsLS) {
+        try {
+            cards = JSON.parse(cardsLS);
+            // Render existing cards on the page
+            renderCards(cards);
+        } catch (error) {
+            console.error("Error parsing cards from localStorage:", error);
+        }
+    }
+
+    function renderCards(cardsArray) {
+        const cardContainer = document.querySelector('.card-container');
+        cardContainer.innerHTML = cardsArray.map(card => card.html).join('');
+    }
+
     function addEmployee(event) {
         event.preventDefault();
-    
+        // Generate a unique identifier for the card
+        const timestamp = Date.now().toString();
         // Get form inputs
         const firstNameInput = document.querySelector('input[name="firstName"]');
         const lastNameInput = document.querySelector('input[name="lastName"]');
@@ -10,8 +29,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const phoneInput = document.querySelector('input[name="cellphone"]');
         const positionInput = document.querySelector('input[name="position"]');
         const genderInputs = document.querySelectorAll('input[name="gender"]');
-    
-        // Extract values from form inputs
+        // Extract values
         const firstName = firstNameInput.value;
         const lastName = lastNameInput.value;
         const email = emailInput.value;
@@ -23,37 +41,35 @@ document.addEventListener("DOMContentLoaded", function() {
                 gender = input.value;
             }
         });
-    
-        // Perform validation
         if (!firstName || !lastName || !email || !phone || !position || !gender) {
             alert("Please fill out all fields.");
             return;
         }
-    
         // Create a new employee card
-        const cardContainer = document.querySelector('.display__container');
-        const newCard = document.createElement('div');
-        newCard.classList.add('card');
-    
-        newCard.innerHTML = `
-            <div class="card__header">
-                <div class="card__info">
-                    <h2 class="card__fullname">${firstName} ${lastName}</h2>
-                    <p class="position">${position}</p>
+        const newCardHTML = `
+            <div class="card" data-id="${timestamp}">
+                <div class="card__header">
+                    <div class="card__info">
+                        <h2 class="card__fullname">${firstName} ${lastName}</h2>
+                        <p class="position">${position}</p>
+                    </div>
+                </div>
+                <div class="card__contact">
+                    <p class="card__email">Email: ${email}</p>
+                    <p class="card__cellphone">Phone Number: ${phone}</p>
+                    <p class="card__gender">Gender: ${gender}</p>
+                </div>
+                <div class="displayButtons">
+                    <button class="editBtn">🖊️</button>
+                    <button class="removeBtn">❌</button>
                 </div>
             </div>
-            <div class="card__contact">
-                <p class="card__email">Email: ${email}</p>
-                <p class="card__cellphone">Phone Number: ${phone}</p>
-                <p class="card__gender">Gender: ${gender}</p>
-            </div>
-            <div class="displayButtons">
-                <button class="editBtn">🖊️</button>
-                <button class="removeBtn">❌</button>
-            </div>
         `;
-        cardContainer.appendChild(newCard);
-        clearInputs()
+        const cardContainer = document.querySelector('.display__container');
+        cardContainer.insertAdjacentHTML('beforeend', newCardHTML);
+        cards.push({ id: timestamp, html: newCardHTML });
+        localStorage.setItem('cards', JSON.stringify(cards));
+        clearInputs();
     }
 
     // Function card removal
@@ -61,6 +77,9 @@ document.addEventListener("DOMContentLoaded", function() {
         const cardToRemove = event.target.closest('.card');
         if (cardToRemove) {
             cardToRemove.remove();
+            const cardId = cardToRemove.dataset.id;
+            cards = cards.filter(card => card.id !== cardId);
+            localStorage.setItem('cards', JSON.stringify(cards));
         }
     }
 
@@ -144,20 +163,17 @@ document.addEventListener("DOMContentLoaded", function() {
      }
 
     document.querySelector('.clearBtn').addEventListener('click', clearInputs);
-
     document.querySelector('.addBtn').addEventListener('click', addEmployee);
-
     document.querySelector('.updateBtn').addEventListener('click', updateEmployee);
 
-
-    
+    // Remove button
     document.addEventListener('click', function(event) {
         if (event.target.classList.contains('removeBtn')) {
             removeEmployee(event);
         }
     });
 
-    // Event delegation for the "Edit" button
+    // Edit button
     document.addEventListener('click', function(event) {
         if (event.target.classList.contains('editBtn')) {
             // Clear previous editing styles
