@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function() {
     function addEmployee(event) {
         event.preventDefault();
         // Genera un ID único para cada empleado.
-        const timestamp = Date.now().toString();
+        const id = Date.now().toString();
         
         const firstNameInput = document.querySelector('input[name="firstName"]');
         const lastNameInput = document.querySelector('input[name="lastName"]');
@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
         // Nueva ficha de empleado
         const newCardHTML = `
-            <div class="card" data-id="${timestamp}">
+            <div class="card" data-id="${id}">
                 <div class="card__header">
                     <div class="card__info">
                         <h2 class="card__fullname">${firstName} ${lastName}</h2>
@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function() {
         `;
         const cardContainer = document.querySelector('.display__container');
         cardContainer.insertAdjacentHTML('beforeend', newCardHTML);
-        cards.push({ id: timestamp, html: newCardHTML });
+        cards.push({ id: id, html: newCardHTML });
         localStorage.setItem('cards', JSON.stringify(cards));
         clearInputs();
     }
