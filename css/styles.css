@@ -99,7 +99,7 @@ input {
 }
 
 .addBtn {
-    background-color: hsl(120, 100%, 25%);
+    background-color: hsl(240, 68%, 52%);
     color: white;
 }
 
@@ -109,7 +109,7 @@ input {
 }
 
 .updateBtn {
-    background-color: hsl(240, 68%, 52%);
+    background-color: hsl(120, 100%, 25%);
     color: white;
 }
 

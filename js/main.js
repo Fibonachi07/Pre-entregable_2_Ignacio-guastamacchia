@@ -158,6 +158,63 @@ document.addEventListener("DOMContentLoaded", function() {
     document.querySelector('.addBtn').addEventListener('click', addEmployee);
     document.querySelector('.updateBtn').addEventListener('click', updateEmployee);
 
+    const addBtnNotification = document.querySelector('.addBtn');
+     addBtnNotification.addEventListener('click', () => {
+         Toastify({
+             text: "New employee added successfully!",
+             duration: 1500,
+             gravity: "top", // Adjusted to "top" to position it at the top
+             position: "right", // Adjusted to "right" to position it at the right
+             stopOnFocus: true, // Prevents dismissing of toast on hover
+             style: {
+                 backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
+                 borderRadius: "10px"
+             },
+             offset: {
+                 x: "2em",
+                 y: "2em"
+             }, 
+         }).showToast();
+     });
+
+    const clearBtnNotification = document.querySelector('.clearBtn');
+    clearBtnNotification.addEventListener('click', () => {
+        Toastify({
+            text: "Inputs cleared successfully!",
+            duration: 1500,
+            gravity: "top", // Adjusted to "top" to position it at the top
+            position: "right", // Adjusted to "right" to position it at the right
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+            style: {
+                background: "linear-gradient(to right, #c3c3c3, #e20000)",
+                borderRadius: "10px"
+            },
+            offset: {
+                x: "2em",
+                y: "2em"
+            }
+        }).showToast();
+    });
+
+    const updateBtnNotification = document.querySelector('.updateBtn');
+    updateBtnNotification.addEventListener('click', () => {
+        Toastify({
+            text: "Existing employee updated successfully!",
+            duration: 1500,
+            gravity: "top", // Adjusted to "top" to position it at the top
+            position: "right", // Adjusted to "right" to position it at the right
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+            style: {
+                background: "linear-gradient(to right, #a4a4a4, #2c8011)",
+                borderRadius: "10px"
+            },
+            offset: {
+                x: "2em",
+                y: "2em"
+            }, 
+        }).showToast();
+    });
+
     // Boton eliminar
     document.addEventListener('click', function(event) {
         if (event.target.classList.contains('removeBtn')) {
