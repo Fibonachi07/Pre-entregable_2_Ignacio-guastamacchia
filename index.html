@@ -14,40 +14,42 @@
         <section class="create__container">
             <h1 class="create__title">Create Employee</h1>
 
-            <div class="full__name">
-                <label for="firstName">First Name:</label>
-                <input type="text" name="firstName" placeholder="John" required>
-                <label for="lastName">Last Name:</label>
-                <input type="text" name="lastName" placeholder="Smith" required>
-            </div>
-
-            <div class="contact__info">
-                <label for="email">Email:</label>
-                <input type="email" name="email" id="email" placeholder="johnsmith@aol.com" required>
-                <label for="cellphone">Phone:</label>
-                <input type="tel" name="cellphone" required>
-            </div>
-
-            <label for="position">Position:</label>
-            <input type="text" name="position" id="position" required>
-
-            <div class="user__picture">
-                <div class="genders">
-                    <label for="gender">Gender:</label>
-                    <input type="radio" name="gender" id="genderFemale" value="Female" required>
-                    <label for="genderFemale">F</label>
-                    <input type="radio" name="gender" id="genderMale"  value="Male" required>
-                    <label for="genderMale">M</label>
-                    <input type="radio" name="gender" id="genderNonBinary" value="Non-Binary" required>
-                    <label for="genderNonBinary">X</label>
+            <form action="/" method="post">
+                <div class="full__name">
+                    <label for="firstName">First Name:</label>
+                    <input type="text" name="firstName" placeholder="John" required min="3">
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" name="lastName" placeholder="Smith" required minlength="4">
                 </div>
-            </div>
-
-            <div class="buttons">
-                <button class="addBtn btn" title="Adds a new Employee">Add</button>
-                <button class="clearBtn btn" title="Clears all inputs">Clear</button>
-                <button class="updateBtn btn" title="Updates an existing Employee">Update</button>
-            </div>
+        
+                <div class="contact__info">
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" id="email" placeholder="johnsmith@aol.com" required minlength="4">
+                    <label for="cellphone">Phone:</label>
+                    <input type="tel" name="cellphone" required minlength="4">
+                </div>
+        
+                <label for="position">Position:</label>
+                <input type="text" name="position" id="position" required minlength="3">
+        
+                <div class="user__picture">
+                    <div class="genders">
+                        <label>Gender:</label>
+                        <input type="radio" name="gender" id="genderFemale" value="Female">
+                        <label for="genderFemale">F</label>
+                        <input type="radio" name="gender" id="genderMale"  value="Male">
+                        <label for="genderMale">M</label>
+                        <input type="radio" name="gender" id="genderNonBinary" value="Non-Binary">
+                        <label for="genderNonBinary">X</label>
+                    </div>
+                </div>
+        
+                <div class="buttons">
+                    <button class="addBtn btn" title="Adds a new Employee">Add</button>
+                    <button class="clearBtn btn" title="Clears all inputs">Clear</button>
+                    <button class="updateBtn btn" title="Updates an existing Employee">Update</button>
+                </div>
+            </form>  
         </section>
         
         <section class="display__container">

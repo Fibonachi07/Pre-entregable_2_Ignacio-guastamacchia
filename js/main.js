@@ -46,34 +46,58 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
 
-        if (!firstName || !lastName || !email || !phone || !position || !gender) {
-            return; 
-        }
-        // Nueva ficha de empleado
-        const newCardHTML = `
-            <div class="card" data-id="${id}">
-                <div class="card__header">
-                    <div class="card__info">
-                        <h2 class="card__fullname">${firstName} ${lastName}</h2>
-                        <p class="position">${position}</p>
+        if (
+            firstNameInput.value.trim() !== '' &&
+            lastNameInput.value.trim() !== '' &&
+            emailInput.value.trim() !== '' &&
+            phoneInput.value.trim() !== '' &&
+            positionInput.value.trim() !== '' &&
+            genderInputs.length > 0
+        ) {
+            // New employee card HTML
+            const newCardHTML = `
+                <div class="card" data-id="${id}">
+                    <div class="card__header">
+                        <div class="card__info">
+                            <h2 class="card__fullname">${firstNameInput.value} ${lastNameInput.value}</h2>
+                            <p class="position">${positionInput.value}</p>
+                        </div>
+                    </div>
+                    <div class="card__contact">
+                        <p class="card__email">Email: ${emailInput.value}</p>
+                        <p class="card__cellphone">Phone Number: ${phoneInput.value}</p>
+                        <p class="card__gender">Gender: ${genderInputs[0].value}</p>
+                    </div>
+                    <div class="displayButtons">
+                        <button class="editBtn">🖊️</button>
+                        <button class="removeBtn">❌</button>
                     </div>
                 </div>
-                <div class="card__contact">
-                    <p class="card__email">Email: ${email}</p>
-                    <p class="card__cellphone">Phone Number: ${phone}</p>
-                    <p class="card__gender">Gender: ${gender}</p>
-                </div>
-                <div class="displayButtons">
-                    <button class="editBtn">🖊️</button>
-                    <button class="removeBtn">❌</button>
-                </div>
-            </div>
-        `;
-        const cardContainer = document.querySelector('.display__container');
-        cardContainer.insertAdjacentHTML('beforeend', newCardHTML);
-        cards.push({ id: id, html: newCardHTML });
-        localStorage.setItem('cards', JSON.stringify(cards));
-        clearInputs();
+            `;
+            const cardContainer = document.querySelector('.display__container');
+            cardContainer.insertAdjacentHTML('beforeend', newCardHTML);
+            cards.push({ id: id, html: newCardHTML });
+            localStorage.setItem('cards', JSON.stringify(cards));
+            clearInputs();
+
+            Toastify({ 
+                text: "New employee added successfully!",
+                duration: 1500,
+                gravity: "top",
+                position: "right",
+                stopOnFocus: true,
+                style: {
+                    backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
+                    borderRadius: "10px"
+                },
+                offset: {
+                    x: "2em",
+                    y: "2em"
+                }, 
+            }).showToast();
+        } else {
+            return;
+        }
     }
 
     // Remover ficha
@@ -84,6 +108,23 @@ document.addEventListener("DOMContentLoaded", function() {
             const cardId = cardToRemove.dataset.id;
             cards = cards.filter(card => card.id !== cardId);
             localStorage.setItem('cards', JSON.stringify(cards));
+
+            Toastify({ 
+                text: "Employee deleted successfully!",
+                duration: 1500,
+                gravity: "top",
+                position: "right",
+                stopOnFocus: true,
+                style: {
+                    background: "linear-gradient(to right, #c3c3c3, #e20000)",
+                    borderRadius: "10px"
+                },
+                offset: {
+                    x: "2em",
+                    y: "2em"
+                }, 
+            }).showToast();
+
         }
     }
 
@@ -141,6 +182,22 @@ document.addEventListener("DOMContentLoaded", function() {
 
             cardToUpdate.classList.remove('card--editing');
             clearInputs();
+
+            Toastify({
+                text: "Existing employee updated successfully!",
+                duration: 1500,
+                gravity: "top",
+                position: "right",
+                stopOnFocus: true,
+                style: {
+                    background: "linear-gradient(to right, #a4a4a4, #2c8011)",
+                    borderRadius: "10px"
+                },
+                offset: {
+                    x: "2em",
+                    y: "2em"
+                }, 
+            }).showToast();
         }
     }
     function clearInputs() {
@@ -157,34 +214,17 @@ document.addEventListener("DOMContentLoaded", function() {
     document.querySelector('.clearBtn').addEventListener('click', clearInputs);
     document.querySelector('.addBtn').addEventListener('click', addEmployee);
     document.querySelector('.updateBtn').addEventListener('click', updateEmployee);
+    
 
-    const addBtnNotification = document.querySelector('.addBtn');
-     addBtnNotification.addEventListener('click', () => {
-         Toastify({
-             text: "New employee added successfully!",
-             duration: 1500,
-             gravity: "top", // Adjusted to "top" to position it at the top
-             position: "right", // Adjusted to "right" to position it at the right
-             stopOnFocus: true, // Prevents dismissing of toast on hover
-             style: {
-                 backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
-                 borderRadius: "10px"
-             },
-             offset: {
-                 x: "2em",
-                 y: "2em"
-             }, 
-         }).showToast();
-     });
 
     const clearBtnNotification = document.querySelector('.clearBtn');
     clearBtnNotification.addEventListener('click', () => {
         Toastify({
             text: "Inputs cleared successfully!",
             duration: 1500,
-            gravity: "top", // Adjusted to "top" to position it at the top
-            position: "right", // Adjusted to "right" to position it at the right
-            stopOnFocus: true, // Prevents dismissing of toast on hover
+            gravity: "top",
+            position: "right",
+            stopOnFocus: true,
             style: {
                 background: "linear-gradient(to right, #c3c3c3, #e20000)",
                 borderRadius: "10px"
@@ -193,25 +233,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 x: "2em",
                 y: "2em"
             }
-        }).showToast();
-    });
-
-    const updateBtnNotification = document.querySelector('.updateBtn');
-    updateBtnNotification.addEventListener('click', () => {
-        Toastify({
-            text: "Existing employee updated successfully!",
-            duration: 1500,
-            gravity: "top", // Adjusted to "top" to position it at the top
-            position: "right", // Adjusted to "right" to position it at the right
-            stopOnFocus: true, // Prevents dismissing of toast on hover
-            style: {
-                background: "linear-gradient(to right, #a4a4a4, #2c8011)",
-                borderRadius: "10px"
-            },
-            offset: {
-                x: "2em",
-                y: "2em"
-            }, 
         }).showToast();
     });
 
