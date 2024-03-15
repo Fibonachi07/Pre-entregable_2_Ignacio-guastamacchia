@@ -1,5 +1,35 @@
 document.addEventListener("DOMContentLoaded", function() {
 
+    fetch("./db/main.json")
+    .then(response => response.json())
+    .then(data => {
+        data.forEach(employee => {
+            const card = document.createElement('div')
+            card.innerHTML = `
+                <div class="card" data-id="${employee.id}">
+                    <div class="card__header">
+                        <div class="card__info">
+                            <h2 class="card__fullname">${employee.firstName} ${employee.lastName}</h2>
+                            <p class="position">${employee.position}</p>
+                        </div>
+                    </div>
+                    <div class="card__contact">
+                        <p class="card__email">Email: ${employee.email}</p>
+                        <p class="card__cellphone">Phone Number: ${employee.phone}</p>
+                        <p class="card__gender">Gender: ${employee.gender}</p>
+                    </div>
+                    <div class="displayButtons">
+                        <button class="editBtn">🖊️</button>
+                        <button class="removeBtn">❌</button>
+                    </div>
+                </div>
+            `;
+            const cardContainer = document.querySelector('.display__container');
+            cardContainer.appendChild(card)
+            localStorage.setItem('cards', JSON.stringify(cards));
+        })
+    })
+
     let cards = [];
     // Carga el localStorage si es que hay.
     const cardsLS = localStorage.getItem("cards");
@@ -25,12 +55,6 @@ document.addEventListener("DOMContentLoaded", function() {
         const positionInput = document.querySelector('input[name="position"]');
         const genderInputs = document.querySelectorAll('input[name="gender"]');
 
-        // Valores de los inputs
-        const firstName = firstNameInput.value;
-        const lastName = lastNameInput.value;
-        const email = emailInput.value;
-        const phone = phoneInput.value;
-        const position = positionInput.value;
         let gender = '';
         genderInputs.forEach(input => {
             if (input.checked) {

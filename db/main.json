@@ -1,0 +1,47 @@
+[
+    {
+        "id": "1",
+        "firstName": "Ignacio",
+        "lastName": "Guastamacchia",
+        "email": "ignacioguastamacchia@mmgantes.com",
+        "phone": "5491159194279",
+        "position": "Customer Service Manager",
+        "gender": "Male"
+    },
+    {
+        "id": "2",
+        "firstName": "Gaston",
+        "lastName": "Gallegas",
+        "email": "gastongallegas@mmgantes.com",
+        "phone": "5491140647555",
+        "position": "Customer Service Agent",
+        "gender": "Male"
+    },
+    {
+        "id": "3",
+        "firstName": "Azucena",
+        "lastName": "Noguera",
+        "email": "azucenanoguera@mmgantes.com",
+        "phone": "56987891467",
+        "position": "Customer Service Agent",
+        "gender": "Female"
+    },
+    {
+        "id": "4",
+        "firstName": "Paul",
+        "lastName": "Mazzapoca",
+        "email": "paulmazzapoca@mmgantes.com",
+        "phone": "17272696042",
+        "position": "CEO",
+        "gender": "Male"
+    },
+    {
+        "id": "5",
+        "firstName": "Ariel",
+        "lastName": "Guerra",
+        "email": "arielguerra@mmgantes.com",
+        "phone": "5492914735973",
+        "position": "Accountant",
+        "gender": "Non-Binary"
+    }
+]
